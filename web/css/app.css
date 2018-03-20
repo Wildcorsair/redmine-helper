@@ -1,0 +1,39 @@
+.m-t-5 {
+    margin-top: 5px;
+}
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.m-t-15 {
+    margin-top: 15px;
+}
+
+.m-t-20 {
+    margin-top: 20px;
+}
+
+.m-t-25 {
+    margin-top: 25px;
+}
+
+.m-t-30 {
+    margin-top: 30px;
+}
+
+.m-t-35 {
+    margin-top: 35px;
+}
+
+#app-header {
+    padding: 15px;
+    height: 70px;
+    background-color: mediumseagreen;
+}
+
+#app-logo {
+    color: #fff;
+    font-weight: bold;
+    font-size: 22px;
+}

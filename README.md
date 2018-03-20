@@ -1,1 +1,1 @@
-Dashboard with additional features which extends theRedmine
+Dashboard with additional features which extends the Redmine
