@@ -3,11 +3,17 @@
 {% block body %}
     <div class="continer">
         <div class="row">
+
+            {% if error is defined and error != '' %}
+                <div class="col-md-4 col-md-offset-4 alert alert-danger m-t-30" role="alert">{{ error }}</div>
+            {% endif %}
+
             <div class="col-md-4 col-md-offset-4 m-t-30">
                 {{ form_start(login) }}
                     {{ form_widget(login) }}
                 {{ form_end(login) }}
             </div>
+
         </div>
     </div>
 {% endblock %}
