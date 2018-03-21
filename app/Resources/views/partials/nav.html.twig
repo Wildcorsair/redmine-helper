@@ -1,0 +1,13 @@
+{% if app.user != null %}
+    <div class="container">
+        <div class="row">
+            <div id="app-main-menu-container"class="col-md-12">
+                <div class="col-md-5 pull-right">
+                    {{ form_start(project) }}
+                        {{ form_widget(project) }}
+                    {{ form_end(project) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
