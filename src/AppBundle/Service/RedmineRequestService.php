@@ -48,4 +48,21 @@ class RedmineRequestService
 
         return $details;
     }
+
+    public function getIssuesByProjectId($id)
+    {
+        $projectID = (int)$id;
+
+        $issues = $this->client->issue->all([
+            'project_id' => $projectID
+        ]);
+        dump($issues);
+
+        return $issues;
+    }
+
+    public function getIssueDetails($id)
+    {
+
+    }
 }

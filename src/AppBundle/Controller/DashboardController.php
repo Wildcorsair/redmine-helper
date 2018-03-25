@@ -37,7 +37,7 @@ class DashboardController extends Controller
         $data = $this->redmineRequestService->getProjects();
 
         $projectForm = $this->createForm(ProjectType::class);
-        return $this->render('dashboard/projects.html.twig', [
+        return $this->render('dashboard/projects/projects.html.twig', [
             'project' => $projectForm->createView(),
             'projects' => $data['projects']
         ]);
@@ -46,14 +46,16 @@ class DashboardController extends Controller
     /**
      * Method displays projects details from Redmine.
      *
-     * @Route("/dashboard/projects/{projectId}", name="project_details")
+     * @Route("/dashboard/projects/{projectId}", requirements={"projectId" = "\d+"}, name="project_details")
      */
     public function showProjectDetailsAction(Request $request, $projectId)
     {
         $projectDetails = $this->redmineRequestService->getProjectDetails($projectId);
+        $issues = $this->redmineRequestService->getIssuesByProjectId($projectId);
 
-        return $this->render('dashboard/project.html.twig', [
-            'details' => $projectDetails
+        return $this->render('dashboard/projects/project.html.twig', [
+            'details' => $projectDetails,
+            'issues' => $issues['issues']
         ]);
     }
 }

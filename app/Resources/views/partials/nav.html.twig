@@ -4,16 +4,11 @@
         <div class="container">
             <div class="row">
                 <div id="app-main-menu-container"class="col-md-12">
-                    <div id="app-main-menu" class="col-md-7">
+                    <div id="app-main-menu" class="col-md-12">
                         <ul>
                             <li><a href="{{ path('projects') }}">Projects</a></li>
-                            <li>About</li>
+                            <li><a href="{{ path('projects') }}">About</a></li>
                         </ul>
-                    </div>
-                    <div class="col-md-5 pull-right">
-{#                        {{ form_start(project) }}
-                            {{ form_widget(project) }}
-                        {{ form_end(project) }}#}
                     </div>
                 </div>
             </div>
