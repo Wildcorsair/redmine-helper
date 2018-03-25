@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>{{ details.project.name }} <span class="small">Details</span></h2>
-                <div class="project-item-details m-t-15 col-md-12">
+                <div class="project-item-details m-t-15 m-b-30 col-md-12">
 
                     <!-- Left column -->
                     <div class="col-md-5">
@@ -65,8 +65,50 @@
                                 </tbody>
                             </table>
                         </div>
+
                     </div>
                     <!-- /Right column -->
+
+                    <!-- Full width column -->
+                    <div class="col-md-12 m-t-20">
+                        <!-- Comments -->
+                        <div class="col-md-12">
+                            <span class="app-form-label">Comments:</span>
+                            <span class="pull-right">
+                                <a href="#">View All</a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a href="{{ path('comment_create', {'projectId': details.project.id}) }}">Add New</a>
+                            </span>
+                            <div id="project-comments" class="m-t-15">
+
+                                <div class="project-comment-item">
+                                    <div class="m-t-5"><span class="caption">Author:</span><span class="author">John Doe</span></div>
+                                    <div class="m-t-5"><span class="caption">Created:</span><span class="created-at">23-03-2018 18:30:55</span></div>
+                                    <div class="project-comment-text m-t-5">
+                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus felis id egestas ornare. Aenean feugiat tincidunt orci in ullamcorper. In erat velit, semper a volutpat ac, egestas ut magna. Donec aliquam nisl ac viverra consequat. Vestibulum vel lorem viverra, consequat neque eget, dapibus libero. Aenean venenatis vitae orci nec commodo. Maecenas aliquam orci ut nisl rutrum hendrerit.</i>
+                                    </div>
+                                </div>
+
+                                <div class="project-comment-item m-t-30">
+                                    <div class="m-t-5"><span class="caption">Author:</span><span class="author">John Doe</span></div>
+                                    <div class="m-t-5"><span class="caption">Created:</span><span class="created-at">23-03-2018 18:30:55</span></div>
+                                    <div class="project-comment-text m-t-5">
+                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus felis id egestas ornare. Aenean feugiat tincidunt orci in ullamcorper. In erat velit, semper a volutpat ac, egestas ut magna. Donec aliquam nisl ac viverra consequat. Vestibulum vel lorem viverra, consequat neque eget, dapibus libero. Aenean venenatis vitae orci nec commodo. Maecenas aliquam orci ut nisl rutrum hendrerit.</i>
+                                    </div>
+                                </div>
+
+                                <div class="project-comment-item m-t-30">
+                                    <div class="m-t-5"><span class="caption">Author:</span><span class="author">John Doe</span></div>
+                                    <div class="m-t-5"><span class="caption">Created:</span><span class="created-at">23-03-2018 18:30:55</span></div>
+                                    <div class="project-comment-text m-t-5">
+                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus felis id egestas ornare. Aenean feugiat tincidunt orci in ullamcorper. In erat velit, semper a volutpat ac, egestas ut magna. Donec aliquam nisl ac viverra consequat. Vestibulum vel lorem viverra, consequat neque eget, dapibus libero. Aenean venenatis vitae orci nec commodo. Maecenas aliquam orci ut nisl rutrum hendrerit.</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Comments -->
+                    </div>
+                    <!-- /Full width column -->
 
                 </div>
             </div>

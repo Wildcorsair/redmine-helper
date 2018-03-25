@@ -28,6 +28,36 @@
 .m-t-50 {
   margin-top: 50px; }
 
+.m-b-5 {
+  margin-bottom: 5px; }
+
+.m-b-10 {
+  margin-bottom: 10px; }
+
+.m-b-15 {
+  margin-bottom: 15px; }
+
+.m-b-20 {
+  margin-bottom: 20px; }
+
+.m-b-25 {
+  margin-bottom: 25px; }
+
+.m-b-30 {
+  margin-bottom: 30px; }
+
+.m-b-35 {
+  margin-bottom: 35px; }
+
+.m-b-40 {
+  margin-bottom: 40px; }
+
+.m-b-45 {
+  margin-bottom: 45px; }
+
+.m-b-50 {
+  margin-bottom: 50px; }
+
 .t-a-c {
   text-align: center; }
 
@@ -180,3 +210,15 @@ body {
   border-radius: 4px; }
   #time_log_date_year:focus, #time_log_date_month:focus, #time_log_date_day:focus {
     outline: none; }
+
+#project-comments {
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #ffffdd; }
+  #project-comments .project-comment-item .caption {
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: bold; }
+  #project-comments .project-comment-item .author,
+  #project-comments .project-comment-item .created-at {
+    font-size: 12px; }

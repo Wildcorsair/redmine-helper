@@ -63,7 +63,6 @@ class IssueController extends Controller
 
             $timeLogData = $timeLog->getData();
 
-            dump($timeLogData['date']->format('Y-m-d'));
             $result = $this->redmineRequestService->setIssueTime($timeLogData);
 
             if (isset($result->id) && (int)$result->id > 0) {
