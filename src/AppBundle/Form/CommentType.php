@@ -23,7 +23,7 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('create', SubmitType::class, ['attr' => ['class' => 'btn btn-success']]);
+            ->add('submit', SubmitType::class, ['attr' => ['class' => 'btn btn-success']]);
 
         $params = $options['data'];
 
@@ -49,10 +49,4 @@ class CommentType extends AbstractType
                 ->add('content', TextareaType::class, $commentOptions);
         });
     }
-
-/*    public function configureOptions(OptionsResolver $resolver) {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Comment',
-        ));
-    }*/
 }

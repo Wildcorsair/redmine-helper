@@ -70,7 +70,7 @@ class CommentController extends Controller
      *
      * @Route("/dashboard/projects/{projectId}/comments/edit/{commentId}", requirements={"projectId" = "\d+", "commentId" = "\d+"}, name="comment_edit")
      */
-    public function editAction($projectId, $commentId)
+    public function editAction(Request $request, $projectId, $commentId)
     {
         $user = $this->getUser();
         $comment = $this->getDoctrine()->getRepository(Comment::class)->find($commentId);
@@ -80,6 +80,27 @@ class CommentController extends Controller
             'user' => $user,
             'comment' => $comment
         ]);
+
+        $commentForm->handleRequest($request);
+
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+
+            $commentFormData = $commentForm->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $comment->setContent($commentFormData['content']);
+            $comment->setUpdatedAt(new \DateTime());
+
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            $commentId = $comment->getId();
+
+            $this->addFlash('success', 'The Comment was successfully updated.');
+
+            return $this->redirectToRoute('comment_edit', ['projectId' => $projectId, 'commentId' => $commentId]);
+        }
 
         return $this->render('dashboard/comments/edit.html.twig', [
             'comment' => $commentForm->createView(),

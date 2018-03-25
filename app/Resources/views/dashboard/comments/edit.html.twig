@@ -26,8 +26,7 @@
                         {{ form_widget(comment.content) }}
                     </div>
                     <div class="form-group">
-                        {{ form_label(comment.create) }}
-                        {{ form_widget(comment.create) }}
+                        {{ form_widget(comment.submit) }}
                         <a class="btn btn-default" href="{{ path('project_details', {'projectId': project_id}) }}">Cancel</a>
                     </div>
                     {{ form_end(comment) }}
