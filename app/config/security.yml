@@ -10,6 +10,12 @@ security:
                     admin:
                         password: $2y$12$NebD//Wqoh4SM6VRcjMapeItxlE34xSGqFuuAt6PQKiq7n7Q4j8cC
                         roles: 'ROLE_ADMIN'
+                    manager:
+                        password: $2y$12$9BztJW/mTCE4L82wKz5sFuRBLinJ7QkBzPH7r2LlWSSlXRlB13RTK
+                        roles: 'ROLE_ADMIN'
+                    editor:
+                        password: $2y$12$9BztJW/mTCE4L82wKz5sFuRBLinJ7QkBzPH7r2LlWSSlXRlB13RTK
+                        roles: 'ROLE_ADMIN'
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
