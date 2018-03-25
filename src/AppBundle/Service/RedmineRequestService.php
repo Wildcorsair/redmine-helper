@@ -115,15 +115,20 @@ class RedmineRequestService
         return false;
     }
 
-    public function setIssueTime($id)
+    public function setIssueTime($data)
     {
-        $issueID = (int)$id;
+        if (empty($data) || !is_array($data)) {
+            return false;
+        }
 
-/*        $this->client->time_entry->create([
+        $result = $this->client->time_entry->create([
+            'issue_id'    => $data['issue_id'],
+            'spent_on'    => $data['date']->format('Y-m-d'),
+            'hours'       => $data['hours'],
+            'activity_id' => $data['activity'],
+            'comments'    => $data['comment']
+        ]);
 
-        ]);*/
-
-        $times = $this->client->time_entry->all();
-        dump($times);
+        return $result;
     }
 }

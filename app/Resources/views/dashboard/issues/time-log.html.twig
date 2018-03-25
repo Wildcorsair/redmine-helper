@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <h2>Spent Time <span class="small">Create</span></h2>
+
+            <div class="app-form-container m-t-15 col-md-12">
+                {{ form_start(time_log) }}
+                <div class="form-group">
+                    {{ form_label(time_log.date) }}
+                    {{ form_widget(time_log.date) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(time_log.hours) }}
+                    {{ form_widget(time_log.hours) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(time_log.activity) }}
+                    {{ form_widget(time_log.activity) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(time_log.overtime) }}
+                    {{ form_widget(time_log.overtime) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(time_log.comment) }}
+                    {{ form_widget(time_log.comment) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(time_log.create) }}
+                    {{ form_widget(time_log.create) }}
+                    <a class="btn btn-default" href="{{ path('issue_details', {'issueId': issue_id}) }}">Back</a>
+                </div>
+                {{ form_end(time_log) }}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

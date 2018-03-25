@@ -27,7 +27,7 @@ class DefaultController extends Controller
         $lastUserName = $authenticationUtils->getLastUsername();
 
         return $this->render('default/index.html.twig', [
-            'login' => $login->createView(),
+            'login'     => $login->createView(),
             '_username' => $lastUserName,
             'error'     => $message
         ]);
