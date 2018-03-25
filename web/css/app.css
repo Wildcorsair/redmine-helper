@@ -84,6 +84,12 @@
   padding: 13px;
   height: 45px; }
 
+#projects #app-main-menu ul > li a#projects-item {
+  color: #e0cf00; }
+
+#about #app-main-menu ul > li a#about-item {
+  color: #e0cf00; }
+
 #app-main-menu ul {
   color: #fff;
   margin: 0;

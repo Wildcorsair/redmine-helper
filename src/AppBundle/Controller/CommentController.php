@@ -54,7 +54,11 @@ class CommentController extends Controller
 
             $commentId = $comment->getId();
 
-            $this->addFlash('success', 'The new Comment was successfully saved.');
+            if (!empty($commentId) && $commentId > 0) {
+                $this->addFlash('success', 'The Comment was successfully updated.');
+            } else {
+                $this->addFlash('error', 'Ooops, something went wrong.');
+            }
 
             return $this->redirectToRoute('comment_edit', ['projectId' => $projectId, 'commentId' => $commentId]);
         }
@@ -97,7 +101,11 @@ class CommentController extends Controller
 
             $commentId = $comment->getId();
 
-            $this->addFlash('success', 'The Comment was successfully updated.');
+            if (!empty($commentId) && $commentId > 0) {
+                $this->addFlash('success', 'The Comment was successfully updated.');
+            } else {
+                $this->addFlash('error', 'Ooops, something went wrong.');
+            }
 
             return $this->redirectToRoute('comment_edit', ['projectId' => $projectId, 'commentId' => $commentId]);
         }
