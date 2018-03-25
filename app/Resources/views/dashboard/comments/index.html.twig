@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Comments</h2>
+            <div class="comments-list m-t-15 m-b-30">
+                <span class="pull-right">
+                    <a href="{{ path('comment_create', {'projectId': project_id}) }}">Add New</a>
+                </span>
+                {% if comments is defined %}
+                    {% for comment in comments %}
+                        <div class="project-comment-item">
+                            <div class="m-t-5">
+                                <span class="caption">Author:</span>
+                                <span class="author">{{ comment.author }}</span>
+                                <span><a href="{{ path('comment_edit', {'projectId': project_id, 'commentId': comment.id}) }}">Edit</a></span>
+                            </div>
+                            <div class="m-t-5"><span class="caption">Created:</span><span class="created-at">{{ comment.createdAt|date('d-m-Y H:i:s') }}</span></div>
+                            <div class="project-comment-text m-t-5">
+                                <i>{{ comment.content }}</i>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

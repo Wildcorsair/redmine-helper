@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Comment;
 use AppBundle\Form\ProjectType;
+use AppBundle\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Service\RedmineRequestService;
@@ -44,10 +46,16 @@ class ProjectController extends Controller
     {
         $projectDetails = $this->redmineRequestService->getProjectDetails($projectId);
         $issues = $this->redmineRequestService->getIssuesByProjectId($projectId);
+        $comments = $this->getDoctrine()->getRepository(Comment::class)->findBy(
+            ['projectId' => $projectId],
+            ['createdAt' => 'DESC'],
+            3
+        );
 
         return $this->render('dashboard/projects/project.html.twig', [
             'details' => $projectDetails,
-            'issues' => $issues
+            'issues' => $issues,
+            'comments' => $comments
         ]);
     }
 }

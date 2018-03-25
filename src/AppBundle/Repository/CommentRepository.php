@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Comment;
+
 /**
  * CommentRepository
  *
@@ -10,4 +12,16 @@ namespace AppBundle\Repository;
  */
 class CommentRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Method returns comments list from new to old.
+     *
+     * @return array
+     */
+    public function getAllComments()
+    {
+        $qb = $this->getEntityManager()
+            ->createQuery('SELECT c FROM AppBundle\Entity\Comment c WHERE c.projectId = 874 ORDER BY c.createdAt DESC');
+
+        return $qb->getResult();
+    }
 }

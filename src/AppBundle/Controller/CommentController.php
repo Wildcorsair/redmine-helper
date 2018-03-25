@@ -11,14 +11,23 @@ use Symfony\Component\HttpFoundation\Request;
 class CommentController extends Controller
 {
     /**
-     * @Route("/dashboard/comments", name="comments");
+     * Displays all comments by project.
+     *
+     * @Route("/dashboard/projects/{projectId}/comments", requirements={"projectId" = "\d+"}, name="comments");
      */
-    public function indexAction()
+    public function indexAction($projectId)
     {
-        return $this->render('dashboard/comments/index.html.twig');
+        $comments = $this->getDoctrine()->getRepository(Comment::class)->getAllComments();
+
+        return $this->render('dashboard/comments/index.html.twig', [
+            'comments' => $comments,
+            'project_id' => $projectId
+        ]);
     }
 
     /**
+     * Create new comment action.
+     *
      * @Route("/dashboard/projects/{projectId}/comments/create", requirements={"projectId" = "\d+"}, name="comment_create");
      */
     public function createAction(Request $request, $projectId)
@@ -57,6 +66,8 @@ class CommentController extends Controller
     }
 
     /**
+     * Comment edit action.
+     *
      * @Route("/dashboard/projects/{projectId}/comments/edit/{commentId}", requirements={"projectId" = "\d+", "commentId" = "\d+"}, name="comment_edit")
      */
     public function editAction($projectId, $commentId)

@@ -158,7 +158,8 @@ body {
   cursor: pointer; }
 
 .issue-item-details,
-.project-item-details {
+.project-item-details,
+.comments-list {
   padding: 40px 20px;
   border: 1px solid #CCCCCC;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2); }
@@ -215,10 +216,17 @@ body {
   padding: 20px;
   border: 1px solid #ccc;
   background-color: #ffffdd; }
-  #project-comments .project-comment-item .caption {
+
+.project-comment-item {
+  padding: 0 5px 20px; }
+  .project-comment-item .caption {
     margin-right: 5px;
     font-size: 12px;
     font-weight: bold; }
-  #project-comments .project-comment-item .author,
-  #project-comments .project-comment-item .created-at {
+  .project-comment-item .author,
+  .project-comment-item .created-at {
     font-size: 12px; }
+  .project-comment-item:not(:first-child) {
+    margin-top: 25px; }
+  .project-comment-item:not(:last-child) {
+    border-bottom: 1px solid #ccc; }
