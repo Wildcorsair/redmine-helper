@@ -16,4 +16,14 @@ class DashboardController extends Controller
     {
         return $this->render('dashboard/index.html.twig');
     }
+
+    /**
+     * @Route("/dashboard/about", name="about")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function aboutAction()
+    {
+        return $this->render('dashboard/about.html.twig');
+    }
 }

@@ -41,11 +41,13 @@ class CommentController extends Controller
             $comment->setCreatedAt(new \DateTime());
 
             $entityManager->persist($comment);
-            $result = $entityManager->flush();
+            $entityManager->flush();
 
-            $this->addFlash('success', 'The new Time Log was successfully saved.');
+            $commentId = $comment->getId();
 
-            return $this->redirectToRoute('comment_edit', ['projectId' => $projectId]);
+            $this->addFlash('success', 'The new Comment was successfully saved.');
+
+            return $this->redirectToRoute('comment_edit', ['projectId' => $projectId, 'commentId' => $commentId]);
         }
 
         return $this->render('dashboard/comments/create.html.twig', [
@@ -57,8 +59,20 @@ class CommentController extends Controller
     /**
      * @Route("/dashboard/projects/{projectId}/comments/edit/{commentId}", requirements={"projectId" = "\d+", "commentId" = "\d+"}, name="comment_edit")
      */
-    public function editAction()
+    public function editAction($projectId, $commentId)
     {
-        return $this->render('dashboard/comments/edit.html.twig');
+        $user = $this->getUser();
+        $comment = $this->getDoctrine()->getRepository(Comment::class)->find($commentId);
+
+        $commentForm = $this->createForm(CommentType::class, [
+            'project_id' => $projectId,
+            'user' => $user,
+            'comment' => $comment
+        ]);
+
+        return $this->render('dashboard/comments/edit.html.twig', [
+            'comment' => $commentForm->createView(),
+            'project_id' => $projectId
+        ]);
     }
 }

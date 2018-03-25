@@ -15,14 +15,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class CommentType extends AbstractType
 {
     /**
-     * {@inheritdoc}
+     * Creates the Comment form.
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content', TextareaType::class, [
-                'attr' => ['class' => 'form-control', 'rows' => '7']
-            ])
             ->add('create', SubmitType::class, ['attr' => ['class' => 'btn btn-success']]);
 
         $params = $options['data'];
@@ -38,9 +38,21 @@ class CommentType extends AbstractType
                 'attr' => ['class' => 'form-control', 'readonly' => 'readonly', 'value' => $params['user']]
             ];
 
+            $commentOptions = [
+                'attr' => ['class' => 'form-control', 'rows' => '7'],
+                'data' => isset($params['comment']) ? $params['comment']->getContent() : ''
+            ];
+
             $form
                 ->add('project_id', HiddenType::class, $formOptions)
-                ->add('author', TextType::class, $authorOptions);
+                ->add('author', TextType::class, $authorOptions)
+                ->add('content', TextareaType::class, $commentOptions);
         });
     }
+
+/*    public function configureOptions(OptionsResolver $resolver) {
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Entity\Comment',
+        ));
+    }*/
 }
