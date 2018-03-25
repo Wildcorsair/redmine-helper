@@ -23,6 +23,8 @@ class IssueController extends Controller
      */
     public function issueDetailsAction($issueId)
     {
+        $this->redmineRequestService->setIssueTime($issueId);
+
         $details = $this->redmineRequestService->getIssueDetails($issueId);
 
         return $this->render('dashboard/issues/issue.html.twig', [

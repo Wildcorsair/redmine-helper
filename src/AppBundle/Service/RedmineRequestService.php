@@ -11,13 +11,26 @@ namespace AppBundle\Service;
 
 class RedmineRequestService
 {
+    /**
+     * @var \Redmine\Client
+     */
     private $client;
 
+    /**
+     * RedmineRequestService constructor.
+     *
+     * @param \Redmine\Client $client
+     */
     public function __construct(\Redmine\Client $client)
     {
         $this->client = $client;
     }
 
+    /**
+     * Returns list of projects.
+     *
+     * @return array
+     */
     public function getProjects()
     {
         $projects = $this->client->project->all();
@@ -25,6 +38,12 @@ class RedmineRequestService
         return $projects;
     }
 
+    /**
+     * Returns list of projects in array format.
+     * Prepared for form select control.
+     *
+     * @return array|bool
+     */
     public function getProjectsArray()
     {
         $list = [];
@@ -41,6 +60,12 @@ class RedmineRequestService
         return $list;
     }
 
+    /**
+     * Returns project details by project identifier.
+     *
+     * @param int $id
+     * @return array
+     */
     public function getProjectDetails($id)
     {
         $projectID = (int)$id;
@@ -49,6 +74,12 @@ class RedmineRequestService
         return $details;
     }
 
+    /**
+     * Returns list of issues by project identifier of false if no data.
+     *
+     * @param int $id
+     * @return array|bool
+     */
     public function getIssuesByProjectId($id)
     {
         $projectID = (int)$id;
@@ -56,7 +87,7 @@ class RedmineRequestService
         $issues = $this->client->issue->all([
             'project_id' => $projectID
         ]);
-        dump($issues);
+
         if (!empty($issues) && isset($issues['issues'])) {
             return $issues['issues'];
         }
@@ -65,16 +96,34 @@ class RedmineRequestService
 
     }
 
+    /**
+     * Returns issue details by issue identifier or false if no data.
+     *
+     * @param int $id
+     * @return array|bool
+     */
     public function getIssueDetails($id)
     {
         $issueID = (int)$id;
 
         $details = $this->client->issue->show($issueID);
-        dump($details);
+
         if (!empty($details) && isset($details['issue'])) {
             return $details['issue'];
         }
 
         return false;
+    }
+
+    public function setIssueTime($id)
+    {
+        $issueID = (int)$id;
+
+/*        $this->client->time_entry->create([
+
+        ]);*/
+
+        $times = $this->client->time_entry->all();
+        dump($times);
     }
 }

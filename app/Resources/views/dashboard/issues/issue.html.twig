@@ -6,6 +6,14 @@
             <div class="col-md-12">
                 <h2>{{ issue.subject }} <span class="small">Details</span></h2>
                 <div class="issue-item-details m-t-15 col-md-12">
+                    <!-- Full width column -->
+                    <div class="col-md-12">
+                        <div class="col-md-1 pull-right">
+                            <a href="">Log Time</a>
+                        </div>
+                    </div>
+                    <!-- /Full width column -->
+
                     <!-- Left column -->
                     <div class="col-md-5">
                         <div class="app-form-row col-md-12">
@@ -22,13 +30,20 @@
                             <span class="app-form-label">Author:</span><span>{{ issue.author.name }}</span>
                         </div>
                         <div class="app-form-row col-md-12">
-                            <span class="app-form-label">Assigned to:</span><span>{{ issue.assigned_to.name }}</span>
+                            <span class="app-form-label">Assigned to:</span>
+                            <span>
+                                {% if issue.assigned_to.name is defined %}
+                                    {{ issue.assigned_to.name }}
+                                {% else %}
+                                    Nobody
+                                {% endif %}
+                            </span>
                         </div>
                         <div class="app-form-row col-md-12">
-                            <span class="app-form-label">Created:</span><span>{{ issue.created_on|date('d/m/Y - H:i:s') }}</span>
+                            <span class="app-form-label">Created:</span><span>{{ issue.created_on|date('d-m-Y H:i:s') }}</span>
                         </div>
                         <div class="app-form-row col-md-12">
-                            <span class="app-form-label">Modified:</span><span>{{ issue.updated_on|date('d/m/Y - H:i:s') }}</span>
+                            <span class="app-form-label">Modified:</span><span>{{ issue.updated_on|date('d-m-Y H:i:s') }}</span>
                         </div>
                     </div>
                     <!-- /Left column -->
