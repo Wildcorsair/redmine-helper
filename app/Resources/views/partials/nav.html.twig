@@ -1,0 +1,18 @@
+{% if app.user != null %}
+<div id="app-main-menu-fluid" class="container-fluid">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div id="app-main-menu-container"class="col-md-12">
+                    <div id="app-main-menu" class="col-md-12">
+                        <ul>
+                            <li><a id="projects-item" href="{{ path('projects') }}">Projects</a></li>
+                            <li><a id="about-item" href="{{ path('about') }}">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% set current = 'projects' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Comment <span class="small">Create</span></h2>
+
+            {% if app.session.flashBag.has('success') %}
+                <div class="alert alert-success">
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% elseif app.session.flashBag.has('error') %}
+                <div class="alert alert-danger">
+                    {% for msg in app.session.flashBag.get('error') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="app-form-container m-t-15 col-md-12">
+                {{ form_start(comment) }}
+                    <div class="form-group">
+                        {{ form_label(comment.author) }}
+                        {{ form_widget(comment.author) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(comment.content) }}
+                        {{ form_widget(comment.content) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(comment.submit) }}
+                        <a class="btn btn-default" href="{{ path('project_details', {'projectId': project_id}) }}">Cancel</a>
+                    </div>
+                {{ form_end(comment) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
