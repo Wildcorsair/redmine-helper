@@ -115,6 +115,12 @@ class RedmineRequestService
         return false;
     }
 
+    /**
+     * The method creates new Time Log on the Redmine server side.
+     *
+     * @param array $data
+     * @return bool|false|string
+     */
     public function setIssueTime($data)
     {
         if (empty($data) || !is_array($data)) {

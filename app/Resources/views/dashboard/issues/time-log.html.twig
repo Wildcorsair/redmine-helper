@@ -8,6 +8,20 @@
 
             <h2>Spent Time <span class="small">Create</span></h2>
 
+            {% if app.session.flashBag.has('success') %}
+                <div class="alert alert-success">
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% elseif app.session.flashBag.has('error') %}
+                <div class="alert alert-danger">
+                    {% for msg in app.session.flashBag.get('error') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
             <div class="app-form-container m-t-15 col-md-12">
                 {{ form_start(time_log) }}
                 <div class="form-group">

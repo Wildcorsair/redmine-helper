@@ -65,9 +65,14 @@ class IssueController extends Controller
 
             dump($timeLogData['date']->format('Y-m-d'));
             $result = $this->redmineRequestService->setIssueTime($timeLogData);
-//            dump($result);
 
-//            return $this->redirectToRoute('task_success');
+            if (isset($result->id) && (int)$result->id > 0) {
+                $this->addFlash('success', 'The new Time Log was successfully saved.');
+            } else {
+                $this->addFlash('error', 'Something went wrong. Data was not saved.');
+            }
+
+            return $this->redirectToRoute('time_log', ['issueId' => $issueId]);
         }
 
         return $this->render('dashboard/issues/time-log.html.twig', [
