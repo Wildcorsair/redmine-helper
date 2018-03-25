@@ -34,28 +34,34 @@
                             <span class="app-form-label">Issue tracking:</span>
                             <table class="table">
                                 <thead>
-                                    <th>Name</th>
-                                    <th>Priority</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Priority</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                    {% for issue in issues %}
-                                    <tr>
-                                        <td>
-                                            {{ issue.subject }}
-                                        </td>
-                                        <td>
-                                            {{ issue.priority.name }}
-                                        </td>
-                                        <td>
-                                            {{ issue.status.name }}
-                                        </td>
-                                        <td>
-                                            <a href="{{ path('issue_details', {'issueId': issue.id}) }}">Manage</a>
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
+                                    {% if issues == false %}
+                                        <tr><td colspan="4" class="empty-table-message">No data to display</td></tr>
+                                    {% else %}
+                                        {% for issue in issues %}
+                                        <tr>
+                                            <td>
+                                                {{ issue.subject }}
+                                            </td>
+                                            <td>
+                                                {{ issue.priority.name }}
+                                            </td>
+                                            <td>
+                                                {{ issue.status.name }}
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('issue_details', {'issueId': issue.id}) }}">Manage</a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    {% endif %}
                                 </tbody>
                             </table>
                         </div>

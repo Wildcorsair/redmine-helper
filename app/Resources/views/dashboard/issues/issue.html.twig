@@ -4,10 +4,112 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                {#<h2>{{ issue.subject }} <span class="small">Details</span></h2>#}
-                <h2>Lorem ipsum <span class="small">Details</span></h2>
+                <h2>{{ issue.subject }} <span class="small">Details</span></h2>
                 <div class="issue-item-details m-t-15 col-md-12">
+                    <!-- Left column -->
+                    <div class="col-md-5">
+                        <div class="app-form-row col-md-12">
+                            <span class="app-form-label">Project:</span>
+                            <span><a href="{{ path('project_details', {'projectId': issue.project.id}) }}">{{ issue.project.name }}</a></span>
+                        </div>
+                        <div class="app-form-row col-md-12">
+                            <span class="app-form-label">Trecker:</span><span>{{ issue.tracker.name }}</span>
+                        </div>
+                        <div class="app-form-row col-md-12">
+                            <span class="app-form-label">Status:</span><span>{{ issue.status.name }}</span>
+                        </div>
+                        <div class="app-form-row col-md-12">
+                            <span class="app-form-label">Author:</span><span>{{ issue.author.name }}</span>
+                        </div>
+                        <div class="app-form-row col-md-12">
+                            <span class="app-form-label">Assigned to:</span><span>{{ issue.assigned_to.name }}</span>
+                        </div>
+                        <div class="app-form-row col-md-12">
+                            <span class="app-form-label">Created:</span><span>{{ issue.created_on|date('d/m/Y - H:i:s') }}</span>
+                        </div>
+                        <div class="app-form-row col-md-12">
+                            <span class="app-form-label">Modified:</span><span>{{ issue.updated_on|date('d/m/Y - H:i:s') }}</span>
+                        </div>
+                    </div>
+                    <!-- /Left column -->
 
+                    <!-- Right column -->
+                    <div class="col-md-7">
+                        <div class="app-form-row col-md-12">
+                            <span class="app-form-label">Start Date:</span>
+                            <span>{{ issue.start_date|date('d-m-Y') }}</span>
+                        </div>
+
+                        <div class="app-form-row col-md-12">
+                            <span class="app-form-label">Hours:</span>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="t-a-c hours-highlights">Estimated</th>
+                                        <th class="t-a-c hours-highlights">Total Estimated</th>
+                                        <th class="t-a-c hours-highlights">Spent</th>
+                                        <th class="t-a-c hours-highlights">Total Spent</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="t-a-c hours-highlights">
+                                            {% if issue.estimated_hours is defined %}
+                                                {{ issue.estimated_hours }}h
+                                            {% else %}
+                                                0h
+                                            {% endif %}
+                                        </td>
+                                        <td class="t-a-c hours-highlights">
+                                            {% if issue.total_estimated_hours is defined %}
+                                                {{ issue.total_estimated_hours }}h
+                                            {% else %}
+                                                0h
+                                            {% endif %}
+                                        </td>
+                                        <td class="t-a-c hours-highlights">
+                                            {% if issue.spent_hours is defined %}
+                                                {{ issue.spent_hours }}h
+                                            {% else %}
+                                                0h
+                                            {% endif %}
+                                        </td>
+                                        <td class="t-a-c hours-highlights">
+                                            {% if issue.total_spent_hours is defined %}
+                                                {{ issue.total_spent_hours }}h
+                                            {% else %}
+                                                0h
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="app-form-row col-md-12">
+                            {% if issue.done_ratio < 40 %}
+                                {%  set color = 'ratio-red-color' %}
+                            {% elseif issue.done_ratio >= 40  and issue.done_ratio < 60 %}
+                                {%  set color = 'ratio-orange-color' %}
+                            {% elseif issue.done_ratio >= 60 %}
+                                {%  set color = 'ratio-green-color' %}
+                            {% else %}
+                                {%  set color = '' %}
+                            {% endif %}
+                            <span class="app-form-label">Done:</span>
+                            <span class="ratio-highlights {{ color }}">{{ issue.done_ratio }}%</span>
+                        </div>
+                    </div>
+                    <!-- /Right column -->
+
+
+                    <!-- Full width column -->
+                    <div class="col-md-12">
+                        <div class="app-form-row col-md-12">
+                            <div class="app-form-label">Description:</div>
+                            <div class="issue-description m-t-5">{{ issue.description }}</div>
+                        </div>
+                    </div>
+                    <!-- /Full width column -->
                 </div>
             </div>
         </div>

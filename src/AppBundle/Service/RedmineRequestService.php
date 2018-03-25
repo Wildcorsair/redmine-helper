@@ -21,7 +21,7 @@ class RedmineRequestService
     public function getProjects()
     {
         $projects = $this->client->project->all();
-        dump($projects);
+
         return $projects;
     }
 
@@ -57,12 +57,24 @@ class RedmineRequestService
             'project_id' => $projectID
         ]);
         dump($issues);
+        if (!empty($issues) && isset($issues['issues'])) {
+            return $issues['issues'];
+        }
 
-        return $issues;
+        return false;
+
     }
 
     public function getIssueDetails($id)
     {
+        $issueID = (int)$id;
 
+        $details = $this->client->issue->show($issueID);
+        dump($details);
+        if (!empty($details) && isset($details['issue'])) {
+            return $details['issue'];
+        }
+
+        return false;
     }
 }

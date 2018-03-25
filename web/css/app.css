@@ -28,6 +28,15 @@
 .m-t-50 {
   margin-top: 50px; }
 
+.t-a-c {
+  text-align: center; }
+
+.t-a-l {
+  text-align: left; }
+
+.t-a-r {
+  text-align: right; }
+
 #app-main-menu-fluid {
   background-color: #057347;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3); }
@@ -53,6 +62,11 @@
     font-size: 16px; }
     #app-main-menu ul > li a:hover {
       color: #e0cf00; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif; }
 
 #app-header-fluid {
   background-color: mediumseagreen; }
@@ -114,10 +128,33 @@
   padding: 10px; }
 
 .app-form-label {
+  margin-right: 10px;
   font-family: inherit;
   font-size: 16px;
   font-weight: bold; }
 
 .issue-description {
+  padding: 10px;
   height: 70px;
   border: 1px solid #ccc; }
+
+.empty-table-message {
+  color: #F5871F;
+  font-size: 14px;
+  text-align: center; }
+
+.hours-highlights {
+  background-color: lightblue; }
+
+.ratio-highlights {
+  font-family: inherit;
+  font-weight: bold; }
+
+.ratio-red-color {
+  color: #C82829; }
+
+.ratio-orange-color {
+  color: #ffa500; }
+
+.ratio-green-color {
+  color: green; }

@@ -47,7 +47,7 @@ class ProjectController extends Controller
 
         return $this->render('dashboard/projects/project.html.twig', [
             'details' => $projectDetails,
-            'issues' => $issues['issues']
+            'issues' => $issues
         ]);
     }
 }

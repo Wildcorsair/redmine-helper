@@ -17,10 +17,16 @@ class IssueController extends Controller
 
     /**
      * @Route("/dashboard/issue/{issueId}", requirements={"issueId" = "\d+"}, name="issue_details")
+     *
+     * @param int $issueId
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function issueDetailsAction($issueId)
     {
-        $issue = $this->redmineRequestService->getIssueDetails($issueId);
-        return $this->render('dashboard/issues/issue.html.twig');
+        $details = $this->redmineRequestService->getIssueDetails($issueId);
+
+        return $this->render('dashboard/issues/issue.html.twig', [
+            'issue' => $details
+        ]);
     }
 }
