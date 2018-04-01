@@ -83,15 +83,19 @@
                             </span>
                             <div id="project-comments" class="m-t-15">
                                 {% if comments is defined %}
-                                    {% for comment in comments %}
-                                        <div class="project-comment-item">
-                                            <div class="m-t-5"><span class="caption">Author:</span><span class="author">{{ comment.author }}</span></div>
-                                            <div class="m-t-5"><span class="caption">Created:</span><span class="created-at">{{ comment.createdAt|date('d-m-Y H:i:s') }}</span></div>
-                                            <div class="project-comment-text m-t-5">
-                                                <i>{{ comment.content }}</i>
+                                    {% if comments is empty %}
+                                        <div>No data to display</div>
+                                    {% else %}
+                                        {% for comment in comments %}
+                                            <div class="project-comment-item">
+                                                <div class="m-t-5"><span class="caption">Author:</span><span class="author">{{ comment.author }}</span></div>
+                                                <div class="m-t-5"><span class="caption">Created:</span><span class="created-at">{{ comment.createdAt|date('d-m-Y H:i:s') }}</span></div>
+                                                <div class="project-comment-text m-t-5">
+                                                    <i>{{ comment.content }}</i>
+                                                </div>
                                             </div>
-                                        </div>
-                                    {% endfor %}
+                                        {% endfor %}
+                                    {% endif %}
                                 {% endif %}
                             </div>
                         </div>
