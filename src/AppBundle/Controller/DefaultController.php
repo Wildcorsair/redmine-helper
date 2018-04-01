@@ -43,8 +43,6 @@ class DefaultController extends Controller
 
     /**
      * Logout action.
-     *
-     * @Route("/logout", name="logout")
      */
     public function logoutAction()
     {
