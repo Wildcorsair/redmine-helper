@@ -17,10 +17,11 @@ class CommentRepository extends \Doctrine\ORM\EntityRepository
      *
      * @return array
      */
-    public function getAllComments()
+    public function getAllComments($projectId)
     {
         $qb = $this->getEntityManager()
-            ->createQuery('SELECT c FROM AppBundle\Entity\Comment c WHERE c.projectId = 874 ORDER BY c.createdAt DESC');
+            ->createQuery('SELECT c FROM AppBundle\Entity\Comment c WHERE c.projectId = :projectId ORDER BY c.createdAt DESC')
+            ->setParameter('projectId', (int)$projectId);
 
         return $qb->getResult();
     }

@@ -17,8 +17,7 @@ class CommentController extends Controller
      */
     public function indexAction($projectId)
     {
-        $comments = $this->getDoctrine()->getRepository(Comment::class)->getAllComments();
-
+        $comments = $this->getDoctrine()->getRepository(Comment::class)->getAllComments($projectId);
         return $this->render('dashboard/comments/index.html.twig', [
             'comments' => $comments,
             'project_id' => $projectId
