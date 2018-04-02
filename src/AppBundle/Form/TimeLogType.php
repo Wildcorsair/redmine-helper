@@ -26,6 +26,11 @@ class TimeLogType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('issue_id', HiddenType::class, [
+                'attr' => [
+                    'value' => (int)$options['data']['issue_id']
+                ]
+            ])
             ->add('date', DateType::class)
             ->add('hours', TextType::class, [
                 'attr' => [
@@ -52,18 +57,6 @@ class TimeLogType extends AbstractType
             ])
             ->add('create', SubmitType::class, ['attr' => ['class' => 'btn btn-success']])
             ->getForm();
-
-        $issueID = (int)$options['data']['issue_id'];
-
-        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($issueID) {
-            $form = $event->getForm();
-
-            $formOptions = [
-                'attr' => ['value' => $issueID]
-            ];
-
-            $form->add('issue_id', HiddenType::class, $formOptions);
-        });
     }
 
     public function configureOptions(OptionsResolver $resolver)
