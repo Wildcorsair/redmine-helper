@@ -5,19 +5,18 @@ var gulp   = require('gulp'),
 // SASS to CSS task
 gulp.task('sass', function() {
     return gulp.src('web/assets/sass/*.sass')
-    .pipe(sass())
-    .pipe(gulp.dest('web/css'));
+        .pipe(sass())
+        .pipe(gulp.dest('web/css'));
 });
 
 // Copy libraries
 gulp.task('copy-libs', function () {
-  return gulp.src('web/assets/libs/')
-      .pipe(gulp.dest('web/libs/'));
+    return gulp.src('web/assets/libs/**')
+        .pipe(gulp.dest('web/libs/'));
 });
 
-gulp.task('build', ['sass', 'copy-libs'], function() {
-    console.log('Modules was successfully built!');
-});
+// Build CSS and copy third party libraries
+gulp.task('build', ['sass', 'copy-libs']);
 
 // Watch task
 gulp.task('watch', function() {
