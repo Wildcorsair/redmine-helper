@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Comment;
-use AppBundle\Form\ProjectType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Service\RedmineRequestService;
@@ -29,9 +28,7 @@ class ProjectController extends Controller
     {
         $data = $this->redmineRequestService->getProjects();
 
-        $projectForm = $this->createForm(ProjectType::class);
         return $this->render('dashboard/projects/projects.html.twig', [
-            'project' => $projectForm->createView(),
             'projects' => $data['projects']
         ]);
     }
