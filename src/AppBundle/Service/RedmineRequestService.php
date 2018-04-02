@@ -49,7 +49,7 @@ class RedmineRequestService
         $list = [];
         $projects = $this->getProjects();
 
-        if (empty($projects)) {
+        if (!is_array($projects)) {
             return false;
         }
 
